@@ -54,7 +54,7 @@ namespace GradeCalculator
  */
  using System;
 
-namespace MovieTicketCalculator
+/* namespace MovieTicketCalculator
 {
     class Program
     {
@@ -89,6 +89,63 @@ namespace MovieTicketCalculator
             else
             {
                 return 10; // Regular price
+            }
+        }
+    }
+}
+ */
+
+ using System;
+
+namespace TriangleTypeCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Prompt the user to enter the lengths of the three sides of a triangle
+            Console.Write("Enter the length of side 1: ");
+            double side1 = GetValidSideLength();
+            Console.Write("Enter the length of side 2: ");
+            double side2 = GetValidSideLength();
+            Console.Write("Enter the length of side 3: ");
+            double side3 = GetValidSideLength();
+
+            // Determine the type of triangle
+            string triangleType = DetermineTriangleType(side1, side2, side3);
+
+            // Display the type of triangle
+            Console.WriteLine($"The triangle is {triangleType}.");
+        }
+
+        static double GetValidSideLength()
+        {
+            double sideLength;
+            string input = Console.ReadLine();
+
+            while (!double.TryParse(input, out sideLength) || sideLength <= 0)
+            {
+                Console.WriteLine("Invalid input. Please enter a positive number.");
+                Console.Write("Enter the length: ");
+                input = Console.ReadLine();
+            }
+
+            return sideLength;
+        }
+
+        static string DetermineTriangleType(double side1, double side2, double side3)
+        {
+            if (side1 == side2 && side2 == side3)
+            {
+                return "Equilateral";
+            }
+            else if (side1 == side2 || side1 == side3 || side2 == side3)
+            {
+                return "Isosceles";
+            }
+            else
+            {
+                return "Scalene";
             }
         }
     }
