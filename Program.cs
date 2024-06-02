@@ -1,4 +1,4 @@
-﻿using System;
+﻿/* using System;
 
 namespace GradeCalculator
 {
@@ -47,6 +47,48 @@ namespace GradeCalculator
             else
             {
                 return "F";
+            }
+        }
+    }
+}
+ */
+ using System;
+
+namespace MovieTicketCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Prompt the user to enter their age
+            Console.Write("Enter your age: ");
+            string input = Console.ReadLine();
+            int age;
+
+            // Validate the input and convert it to an integer
+            while (!int.TryParse(input, out age) || age < 0)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid age.");
+                Console.Write("Enter your age: ");
+                input = Console.ReadLine();
+            }
+
+            // Determine the ticket price based on the age
+            int ticketPrice = CalculateTicketPrice(age);
+
+            // Display the ticket price
+            Console.WriteLine($"The ticket price is GHC{ticketPrice}.");
+        }
+
+        static int CalculateTicketPrice(int age)
+        {
+            if (age <= 12 || age >= 65)
+            {
+                return 7; // Discounted price for children and senior citizens
+            }
+            else
+            {
+                return 10; // Regular price
             }
         }
     }
